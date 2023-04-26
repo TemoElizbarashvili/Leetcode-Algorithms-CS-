@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -183,5 +184,34 @@ namespace leetcode
                 return 0;
         }
 
+        public static string LongestCommonPrefix(string[] strs)
+        {
+            var result = "";
+            var min = strs.Min().Length;
+            for (int j = 0; j < min ; j++)
+            {
+
+                for (int i = 0; i < strs.Length ; i++)
+                {
+                    if (strs[i][j] != strs[0][j])
+                    {
+                        return result;
+                    }
+                }
+                result += strs[0][j];
+            }
+            return result;
+
+        }
+
+        public ListNode MergeTwoLists(ListNode list1, ListNode list2)
+        {
+            var dummyHead = new ListNode();
+            var curr = list1;
+            while (list1 != null || list2 != null) 
+            {
+
+            }
+        }
     }
 }
