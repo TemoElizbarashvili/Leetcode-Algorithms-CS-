@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\random shit\\random projects\\leetcode\\leetcode\\leetcode.csproj",
+      "projectUniqueName": "F:\\random shit\\random projects\\leetcode\\leetcode algorithms c#\\leetcode.csproj",
       "projectName": "leetcode",
-      "projectPath": "F:\\random shit\\random projects\\leetcode\\leetcode\\leetcode.csproj",
+      "projectPath": "F:\\random shit\\random projects\\leetcode\\leetcode algorithms c#\\leetcode.csproj",
       "packagesPath": "C:\\Users\\temoe\\.nuget\\packages\\",
-      "outputPath": "F:\\random shit\\random projects\\leetcode\\leetcode\\obj\\",
+      "outputPath": "F:\\random shit\\random projects\\leetcode\\leetcode algorithms c#\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
