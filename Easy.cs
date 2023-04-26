@@ -188,10 +188,10 @@ namespace leetcode
         {
             var result = "";
             var min = strs.Min().Length;
-            for (int j = 0; j < min ; j++)
+            for (int j = 0; j < min; j++)
             {
 
-                for (int i = 0; i < strs.Length ; i++)
+                for (int i = 0; i < strs.Length; i++)
                 {
                     if (strs[i][j] != strs[0][j])
                     {
@@ -204,14 +204,34 @@ namespace leetcode
 
         }
 
-        public ListNode MergeTwoLists(ListNode list1, ListNode list2)
+        public static ListNode MergeTwoLists(ListNode list1, ListNode list2)
         {
-            var dummyHead = new ListNode();
-            var curr = list1;
-            while (list1 != null || list2 != null) 
+            List<int> list = new();
+            var result = new ListNode();
+            var final = result;
+            while (list1 != null)
+            {
+                list.Add(list1.val);
+                list1 = list1.next;
+            }
+            while (list2 != null)
+            {
+                list.Add(list2.val);
+                list2 = list2.next;
+            }
+            list.Sort();
+            if (list.Count > 0)
             {
 
+                result.val = list[0];
+                for (int i = 1; i < list.Count; i++)
+                {
+                    result.next = new ListNode(list[i]);
+                    result = result.next;
+                }
+                return final;
             }
+            else return null;
         }
     }
 }

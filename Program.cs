@@ -7,8 +7,8 @@ namespace leetcode
     {
         static void Main(string[] args)
         {
-            string[] str = { "ab", "a" };
-            Console.WriteLine(Easy.LongestCommonPrefix(str));
+            
+            Console.WriteLine(Easy.MergeTwoLists(null,null));
         }
     }
 }
