@@ -27,5 +27,91 @@ namespace leetcode
 
         }
 
+
+        //----------------------NumSimilarGroups ----------------------
+        //initialize parent and rank arrays
+        private static int[] parent;
+        private static int[] rank;
+
+        public static int NumSimilarGroups(string[] strs)
+        {
+            
+            parent = new int[strs.Length];
+            rank = new int[strs.Length];
+            int numberOfSets = 0;
+            //make all element their own parent and give them rank 1
+            for(int i = 0; i < strs.Length; i++)
+            {
+                parent[i] = i;
+                rank[i] = 1;
+            }
+            //compare strings in strs array if they are similar then union
+            for(int i=0; i < strs.Length; i++)
+            {
+                for(int j =i + 1; j < strs.Length; j++)
+                {
+                    if (IsSimilar(strs[i], strs[j])) 
+                        Union(i, j);
+                }
+            }
+            //if parent[i] = i, it means that it is whole set, so we should incrase our result by 1
+            for(int i =0; i< strs.Length; i++)
+            {
+                if (parent[i] == i)
+                    numberOfSets++;
+            }
+            return numberOfSets;
+           
+        }
+
+        public static int FindParent(int x)
+        {
+            if(parent[x] != x) 
+                parent[x] = FindParent(parent[x]);
+            return parent[x];
+        }
+
+        public static void Union(int x, int y)
+        {
+            //find the main parent of set which x and y are part of
+            int setOfX = FindParent(x);
+            int setOfY = FindParent(y);
+            //if they are in the same set return
+            if (setOfX == setOfY) return;
+            //if x set rank is less, join set X to set Y
+            if (rank[setOfX] < rank[setOfY]) parent[setOfX] = setOfY;
+            else
+            {
+                //otherwise do opossite
+                if (rank[setOfX] > rank[setOfY]) parent[setOfY] = setOfX;
+                else
+                {
+                    parent[setOfY] = setOfX;
+                    rank[setOfX]++;
+                }
+            }
+        }
+
+        public static bool IsSimilar(string str1, string str2)
+        {
+            //variable to calculate difference it should be equal 2
+            int diff = 0;
+            //check if this two string is equal
+            if (str1 == str2) return true;
+
+            
+            for(int i = 0; i< str1.Length; i++)
+            {
+                if (str1[i] != str2[i])
+                    diff++;
+                if (diff > 2) return false;
+            }
+            //returns true if difference is equal 2
+            return diff == 2;
+
+        }
+
+        //---------------------- End of NumSimilarGroups ----------------------
+
     }
 }

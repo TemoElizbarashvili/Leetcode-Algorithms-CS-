@@ -8,7 +8,7 @@ namespace leetcode
         static void Main(string[] args)
         {
             
-            Console.WriteLine(Easy.MergeTwoLists(null,null));
+            Console.WriteLine(Easy.IsValid("({})"));
         }
     }
 }

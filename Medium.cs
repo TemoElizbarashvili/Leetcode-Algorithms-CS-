@@ -276,5 +276,12 @@ namespace leetcode
 
             return area;
         }
+
+        public static int BulbSwitch(int n)
+        {
+            
+            return  (int)Math.Floor(Math.Sqrt(n));
+
+        }
     }
 }

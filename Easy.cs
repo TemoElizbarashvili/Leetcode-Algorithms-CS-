@@ -233,5 +233,25 @@ namespace leetcode
             }
             else return null;
         }
+
+        public static bool IsValid(string s)
+        {
+            
+            var k = new Stack<char>();
+           
+            foreach (char c in s)
+            {
+               
+                if (c == '(') { k.Push(')'); continue; }
+               
+                if (c == '{') { k.Push('}'); continue; }
+               
+                if (c == '[') { k.Push(']'); continue; }
+                
+                if (k.Count == 0 || c != k.Pop()) return false;
+            }
+            
+            return k.Count == 0;
+        }
     }
 }
