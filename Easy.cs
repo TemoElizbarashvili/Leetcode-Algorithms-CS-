@@ -253,5 +253,39 @@ namespace leetcode
             
             return k.Count == 0;
         }
+
+        public static int RemoveDuplicates(int[] nums)
+        {
+            var result = nums.Distinct().ToArray();
+            for (int i = 0; i < result.Length; i++)
+            {
+                nums[i] = result[i];
+            }
+            return result.Length;
+        }
+
+        public static void Merge(int[] nums1, int m, int[] nums2, int n)
+        {
+            int j = 0;
+            for(int i=m; i < n + m; i++)
+            {
+                nums1[i]= nums2[j];
+                j++;
+            }
+            Array.Sort(nums1);
+           
+
+        }
+
+        public static int MaximizeSum(int[] nums, int k)
+        {
+            Array.Sort(nums);
+            int res = 0;
+            for (int i = 0; i < k; i++) 
+            {
+                res += nums.Last() + i;
+            }
+            return res;
+        }
     }
 }

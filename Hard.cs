@@ -113,5 +113,49 @@ namespace leetcode
 
         //---------------------- End of NumSimilarGroups ----------------------
 
+
+        public static bool[] DistanceLimitedPathsExist(int n, int[][] edgeList, int[][] queries)
+        {
+            bool[] result = new bool[queries.Length];
+            for(int i=0; i< result.Length; i++)
+            {
+                result[i] = true;
+            }
+            for(int i = 0; i < queries.Length; i++)
+            {
+                int firstVertex = queries[i][0];
+                int secondVertex = queries[i][1];
+                int weight = queries[i][2];
+                bool done = true;
+                while (done == true)
+                {
+
+                    for(int j=0; j < edgeList.Length; j++)
+                    {
+                        if (edgeList[j][0] == firstVertex)
+                        {
+                            if (edgeList[j][2] >= weight)
+                            {
+                                result[i] = false;
+                                done = false;
+                                break;
+                            }
+                            firstVertex = edgeList[j][1];
+                        }
+                        if(firstVertex == secondVertex)
+                        {
+                            done = false;
+                            break;
+                        }
+                            
+                    }
+                }
+                
+            }
+           
+            return result;
+
+        }
+
     }
 }
