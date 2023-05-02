@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
 using System.Text;
@@ -286,6 +287,25 @@ namespace leetcode
                 res += nums.Last() + i;
             }
             return res;
+        }
+
+        public static double Average(int[] salary)
+        {
+            return salary.Where(x => x > salary.Min() && x < salary.Max()).Average();   
+        }
+
+        public static int ArraySign(int[] nums)
+        {
+            int negativeCounter = 0;
+            for(int i=0; i< nums.Length; i++)
+            {
+                if (nums[i] < 0)
+                    negativeCounter++;
+                else
+                    if (nums[i] == 0) 
+                        return 0;
+            }
+            return negativeCounter % 2 == 0 ? 1 : -1;
         }
     }
 }
