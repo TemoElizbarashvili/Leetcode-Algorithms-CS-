@@ -7,20 +7,17 @@ namespace leetcode
     {
         static void Main(string[] args)
         {
-            int[][] arr =
+            int[] arr =
             {
-                new[] { 0,1,2} ,
-                new[]{ 1,2,4 },
-                new[]{2,0,8 },
-                new[]{ 1,0,16 },
+               1,2,3,3
 
             };
-            int[][] arr1 =
+            int[] arr1 =
             {
-                new[] { 0, 1, 2 } ,
-                new[]{ 0,2,5 },
+               1,1,2,2
+
             };
-            Console.WriteLine(Hard.DistanceLimitedPathsExist(3,arr,arr1));
+            Console.WriteLine(Easy.FindDifference(arr, arr1));
         }
     }
 }

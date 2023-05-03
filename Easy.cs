@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Data.SqlTypes;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
@@ -306,6 +307,25 @@ namespace leetcode
                         return 0;
             }
             return negativeCounter % 2 == 0 ? 1 : -1;
+        }
+
+        //2215. Find the Difference of Two Arrays
+        public static IList<IList<int>> FindDifference(int[] nums1, int[] nums2)
+        {
+            var n1 = nums1.ToList();
+            var n2 = nums2.ToList();    
+            n1 = n1.Distinct().ToList();
+            n2 = n2.Distinct().ToList();
+            for(int i=0; i < n2.Count ; i++)
+            {
+                if (n1.Contains(n2[i]))
+                {
+                    n1.Remove(n2[i]);
+                    n2.Remove(n2[i]);
+                    i = 0;
+                }
+            }
+            return new List<IList<int>>() { n1, n2};
         }
     }
 }
