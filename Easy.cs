@@ -4,6 +4,7 @@ using System.ComponentModel.Design;
 using System.Data.SqlTypes;
 using System.Linq;
 using System.Reflection.Metadata.Ecma335;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -238,21 +239,21 @@ namespace leetcode
 
         public static bool IsValid(string s)
         {
-            
+
             var k = new Stack<char>();
-           
+
             foreach (char c in s)
             {
-               
+
                 if (c == '(') { k.Push(')'); continue; }
-               
+
                 if (c == '{') { k.Push('}'); continue; }
-               
+
                 if (c == '[') { k.Push(']'); continue; }
-                
+
                 if (k.Count == 0 || c != k.Pop()) return false;
             }
-            
+
             return k.Count == 0;
         }
 
@@ -269,13 +270,13 @@ namespace leetcode
         public static void Merge(int[] nums1, int m, int[] nums2, int n)
         {
             int j = 0;
-            for(int i=m; i < n + m; i++)
+            for (int i = m; i < n + m; i++)
             {
-                nums1[i]= nums2[j];
+                nums1[i] = nums2[j];
                 j++;
             }
             Array.Sort(nums1);
-           
+
 
         }
 
@@ -283,7 +284,7 @@ namespace leetcode
         {
             Array.Sort(nums);
             int res = 0;
-            for (int i = 0; i < k; i++) 
+            for (int i = 0; i < k; i++)
             {
                 res += nums.Last() + i;
             }
@@ -292,19 +293,19 @@ namespace leetcode
 
         public static double Average(int[] salary)
         {
-            return salary.Where(x => x > salary.Min() && x < salary.Max()).Average();   
+            return salary.Where(x => x > salary.Min() && x < salary.Max()).Average();
         }
 
         public static int ArraySign(int[] nums)
         {
             int negativeCounter = 0;
-            for(int i=0; i< nums.Length; i++)
+            for (int i = 0; i < nums.Length; i++)
             {
                 if (nums[i] < 0)
                     negativeCounter++;
                 else
-                    if (nums[i] == 0) 
-                        return 0;
+                    if (nums[i] == 0)
+                    return 0;
             }
             return negativeCounter % 2 == 0 ? 1 : -1;
         }
@@ -313,10 +314,10 @@ namespace leetcode
         public static IList<IList<int>> FindDifference(int[] nums1, int[] nums2)
         {
             var n1 = nums1.ToList();
-            var n2 = nums2.ToList();    
+            var n2 = nums2.ToList();
             n1 = n1.Distinct().ToList();
             n2 = n2.Distinct().ToList();
-            for(int i=0; i < n2.Count ; i++)
+            for (int i = 0; i < n2.Count; i++)
             {
                 if (n1.Contains(n2[i]))
                 {
@@ -325,19 +326,48 @@ namespace leetcode
                     i = 0;
                 }
             }
-            return new List<IList<int>>() { n1, n2};
+            return new List<IList<int>>() { n1, n2 };
         }
 
         //27. Remove Element
         public static int RemoveElement(int[] nums, int val)
         {
             var res = nums.Where(x => x != val).ToArray();
-            for(int i=0; i< res.Length; i ++)
+            for (int i = 0; i < res.Length; i++)
             {
                 nums[i] = res[i];
             }
             return res.Length;
         }
 
+        //28. Find the Index of the First Occurrence in a String
+        public static int StrStr(string haystack, string needle)
+        {
+            if (!haystack.Contains(needle))
+                return -1;
+            int count = 0;
+            for (int i = 0; i < haystack.Length; i++)
+            {
+                if (haystack[i] == needle[count])
+                {
+                    count++;
+                    if (count == needle.Length)
+                    {
+                        return i - (needle.Length - 1) ;
+                    }
+                }
+                else
+                {
+                    i -= count;
+                    count = 0;
+                }
+            }
+            return 0;
+
+        }
+
+
     }
+
 }
+
