@@ -366,6 +366,22 @@ namespace leetcode
 
         }
 
+        //35. Search Insert Position
+        public static int BinarySearch(int[] nums, int left, int right, int target) 
+        {
+            if (left > right) return left; 
+
+            int half = (right + left) / 2;
+            if (nums[half] == target)
+                return half;
+            if(target < nums[half]) return BinarySearch(nums, left, half - 1 , target);
+            return BinarySearch(nums, half+1, right, target);
+        }
+
+        public static int SearchInsert(int[] nums, int target)
+        {
+            return BinarySearch(nums, 0, nums.Length - 1, target);
+        } 
 
     }
 
