@@ -327,5 +327,17 @@ namespace leetcode
             }
             return new List<IList<int>>() { n1, n2};
         }
+
+        //27. Remove Element
+        public static int RemoveElement(int[] nums, int val)
+        {
+            var res = nums.Where(x => x != val).ToArray();
+            for(int i=0; i< res.Length; i ++)
+            {
+                nums[i] = res[i];
+            }
+            return res.Length;
+        }
+
     }
 }

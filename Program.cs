@@ -9,15 +9,10 @@ namespace leetcode
         {
             int[] arr =
             {
-               1,2,3,3
-
+                0,1,2,2,3,0,4,2
             };
-            int[] arr1 =
-            {
-               1,1,2,2
 
-            };
-            Console.WriteLine(Easy.FindDifference(arr, arr1));
+            Console.WriteLine(Easy.RemoveElement(arr, 2));
         }
     }
 }
