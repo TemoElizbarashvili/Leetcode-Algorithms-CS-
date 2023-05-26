@@ -7,7 +7,7 @@ namespace leetcode
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Easy.StrStr("mississippi", "issip"));
+            Console.WriteLine(Easy.LengthOfLastWord("ab"));
         }
     }
 }

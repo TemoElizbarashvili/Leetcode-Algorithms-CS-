@@ -377,12 +377,25 @@ namespace leetcode
             if(target < nums[half]) return BinarySearch(nums, left, half - 1 , target);
             return BinarySearch(nums, half+1, right, target);
         }
-
         public static int SearchInsert(int[] nums, int target)
         {
             return BinarySearch(nums, 0, nums.Length - 1, target);
-        } 
+        }
 
+        //58. Length of Last Word
+        public static int LengthOfLastWord(string s)
+        {
+            s = s.TrimEnd();
+            var indexOfBlankSpace = s.LastIndexOf(" ");
+            if(indexOfBlankSpace > -1)
+            {
+                return s.Length - 1 - indexOfBlankSpace;
+            }
+            else
+            {
+                return s.Length - 1;
+            }
+        }
     }
 
 }
