@@ -415,6 +415,17 @@ namespace leetcode
 
             return newNumber;
         }
+
+        //67. Add Binary
+        public static string AddBinary(string a, string b)
+        {
+            long firstBinary = Convert.ToInt64(a, 2);
+            long secondBinary = Convert.ToInt64(b, 2);
+
+            long sum = firstBinary + secondBinary;
+
+            return (string)Convert.ToString(sum, 2);
+        }
     }
 
 }

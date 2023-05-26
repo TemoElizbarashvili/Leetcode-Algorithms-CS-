@@ -7,7 +7,7 @@ namespace leetcode
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Easy.LengthOfLastWord("ab"));
+            Console.WriteLine(Easy.AddBinary("11", "1"));
         }
     }
 }
