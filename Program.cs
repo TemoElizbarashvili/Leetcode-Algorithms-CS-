@@ -7,7 +7,8 @@ namespace leetcode
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(Easy.AddBinary("11", "1"));
+            Console.WriteLine(Easy.ClimbStairs(4));
+
         }
     }
 }

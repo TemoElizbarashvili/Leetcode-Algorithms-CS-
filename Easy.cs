@@ -426,6 +426,70 @@ namespace leetcode
 
             return (string)Convert.ToString(sum, 2);
         }
+
+        //69. Sqrt(x)
+        public static int MySqrt(int x)
+        {
+            for(int i=1; i<=x; i++)
+            {
+                long squareI = i * i;
+                if(squareI == x)
+                {
+                    return i;
+                }
+                if(squareI > x)
+                {
+                    return i - 1;
+                }
+            }
+            return 0;
+
+        }
+
+        //70. Climbing Stairs
+        public static int ClimbStairs(int n)
+        {
+            if(n == 1)
+            {
+                return 1;
+            }
+            if(n == 2)
+            {
+                return 2;
+            }
+            int a = 1, b = 2, c = 0;
+            for(int i = 2; i < n; i++)
+            {
+                c = a + b;
+                a = b;
+                b = c;
+            }
+            return c;
+        }
+
+        //83. Remove Duplicates from Sorted List
+        public static ListNode DeleteDuplicates(ListNode head)
+        {
+            if (head == null)
+            {
+                return head;
+            }
+            ListNode newList = new ListNode();
+            newList.val = head.val;
+            ListNode resList = newList;
+            while (head != null)
+            {
+                if (head.val != newList.val)
+                {
+                    newList.next = new ListNode(head.val);
+                    newList = newList.next;
+                }
+                head = head.next;
+            }
+            return resList;
+        }
+
+
     }
 
 }
