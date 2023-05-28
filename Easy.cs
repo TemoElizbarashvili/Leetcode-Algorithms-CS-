@@ -489,6 +489,19 @@ namespace leetcode
             return resList;
         }
 
+        //94. Binary Tree Inorder Traversal
+        public List<int> result = new();
+        public static IList<int> InorderTraversal(TreeNode root)
+        {
+            
+            if (root != null)
+            {
+                InorderTraversal(root.left);
+                result.Add(root.val);
+                InorderTraversal(root.right);
+            }
+            return result;
+        }
 
     }
 
