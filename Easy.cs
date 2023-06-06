@@ -353,7 +353,7 @@ namespace leetcode
                     count++;
                     if (count == needle.Length)
                     {
-                        return i - (needle.Length - 1) ;
+                        return i - (needle.Length - 1);
                     }
                 }
                 else
@@ -367,15 +367,15 @@ namespace leetcode
         }
 
         //35. Search Insert Position
-        public static int BinarySearch(int[] nums, int left, int right, int target) 
+        public static int BinarySearch(int[] nums, int left, int right, int target)
         {
-            if (left > right) return left; 
+            if (left > right) return left;
 
             int half = (right + left) / 2;
             if (nums[half] == target)
                 return half;
-            if(target < nums[half]) return BinarySearch(nums, left, half - 1 , target);
-            return BinarySearch(nums, half+1, right, target);
+            if (target < nums[half]) return BinarySearch(nums, left, half - 1, target);
+            return BinarySearch(nums, half + 1, right, target);
         }
         public static int SearchInsert(int[] nums, int target)
         {
@@ -387,7 +387,7 @@ namespace leetcode
         {
             s = s.TrimEnd();
             var indexOfBlankSpace = s.LastIndexOf(" ");
-            if(indexOfBlankSpace > -1)
+            if (indexOfBlankSpace > -1)
             {
                 return s.Length - 1 - indexOfBlankSpace;
             }
@@ -430,14 +430,14 @@ namespace leetcode
         //69. Sqrt(x)
         public static int MySqrt(int x)
         {
-            for(int i=1; i<=x; i++)
+            for (int i = 1; i <= x; i++)
             {
                 long squareI = i * i;
-                if(squareI == x)
+                if (squareI == x)
                 {
                     return i;
                 }
-                if(squareI > x)
+                if (squareI > x)
                 {
                     return i - 1;
                 }
@@ -449,16 +449,16 @@ namespace leetcode
         //70. Climbing Stairs
         public static int ClimbStairs(int n)
         {
-            if(n == 1)
+            if (n == 1)
             {
                 return 1;
             }
-            if(n == 2)
+            if (n == 2)
             {
                 return 2;
             }
             int a = 1, b = 2, c = 0;
-            for(int i = 2; i < n; i++)
+            for (int i = 2; i < n; i++)
             {
                 c = a + b;
                 a = b;
@@ -490,10 +490,22 @@ namespace leetcode
         }
 
         //94. Binary Tree Inorder Traversal
-        public List<int> result = new();
+        public class TreeNode
+        {
+            public int val;
+            public TreeNode left;
+            public TreeNode right;
+            public TreeNode(int val = 0, TreeNode left = null, TreeNode right = null)
+            {
+                this.val = val;
+                this.left = left;
+                this.right = right;
+            }
+        }
+        public static List<int> result = new();
         public static IList<int> InorderTraversal(TreeNode root)
         {
-            
+
             if (root != null)
             {
                 InorderTraversal(root.left);
@@ -501,6 +513,24 @@ namespace leetcode
                 InorderTraversal(root.right);
             }
             return result;
+        }
+
+        //1502. Can Make Arithmetic Progression From Sequence
+        public static bool CanMakeArithmeticProgression(int[] arr)
+        {
+            Array.Sort(arr);
+            int diff = arr[1] - arr[0];
+            for(int i=0; i<arr.Length; i++)
+            {
+                if(i+1 < arr.Length)
+                {
+                    if (arr[i+1] - arr[i] != diff)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
 
     }
