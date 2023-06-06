@@ -533,6 +533,17 @@ namespace leetcode
             return true;
         }
 
+        //100. Same Tree
+        public static bool IsSameTree(TreeNode p, TreeNode q)
+        {
+            return (p == null && q == null) || ((p?.val == q?.val) && IsSameTree(p.left, q.left) && IsSameTree(p.right, q.right));
+        }
+
+        //101. Symmetric Tree
+        public static bool IsSymmetric(TreeNode root)
+        {
+            return (root.right == null && root.left==null) || ((root.left.val == root.right.val) && (IsSymmetric(root.left) && IsSymmetric(root.right)));
+        }
     }
 
 }
