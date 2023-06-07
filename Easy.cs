@@ -582,25 +582,32 @@ namespace leetcode
         }
 
         //111. Minimum Depth of Binary Tree
-        
         public static int MinDepth(TreeNode root)
         {
-            int heightOfLeft = (root != null) ? Findepth(root.left) + 1 : 0;
-            int heightOfRight = (root != null) ? Findepth(root.right) + 1 : 0;
-            if(heightOfLeft == 1)
-            {
-                return heightOfRight;
-            }
-            else if(heightOfRight == 1)
-            {
-                return heightOfLeft;
-            }
-            else
-            {
-                return Math.Min(heightOfRight, heightOfLeft);
-            }
+            if (root == null)
+                return 0;
+            int lDepth = MinDepth(root.left);
+            int rDepth = MinDepth(root.right);
+            if (lDepth == 0)
+                return rDepth + 1;
+            if (rDepth == 0)
+                return lDepth + 1;
+            return lDepth > rDepth ? rDepth + 1 : lDepth + 1;
         }
 
+        //191. Number of 1 Bits
+        public static int HammingWeight(uint n)
+        {
+            uint c = 0;
+
+            while (n > 0)
+            {
+                c += n & 1; // or: c += n % 2;
+                n >>= 1;    // or: n /= 2;
+            }
+
+            return (int)c;
+        }
     }
 
 }
