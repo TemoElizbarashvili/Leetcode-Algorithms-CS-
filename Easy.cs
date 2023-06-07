@@ -539,11 +539,68 @@ namespace leetcode
             return (p == null && q == null) || ((p?.val == q?.val) && IsSameTree(p.left, q.left) && IsSameTree(p.right, q.right));
         }
 
-        //101. Symmetric Tree
-        public static bool IsSymmetric(TreeNode root)
+        //104. Maximum Depth of Binary Tree
+        public static int MaxDepth(TreeNode root)
         {
-            return (root.right == null && root.left==null) || ((root.left.val == root.right.val) && (IsSymmetric(root.left) && IsSymmetric(root.right)));
+            return (root != null) ? Math.Max(MaxDepth(root.left), MaxDepth(root.right)) + 1 : 0;
         }
+
+        //108. Convert Sorted Array to Binary Search Tree
+        public static TreeNode SortedArrayToBST(int[] nums)
+        {
+            return InsertTheNumInBST(0, nums.Length - 1);
+
+            TreeNode InsertTheNumInBST(int left, int right)
+            {
+                if (left > right)
+                {
+                    return null;
+                }
+                int mid = left + (right - left) / 2;
+                return new TreeNode(nums[mid], InsertTheNumInBST(left, mid - 1), InsertTheNumInBST(mid + 1, right));
+            }
+        }
+
+        //110. Balanced Binary Tree
+        public static int Findepth(TreeNode root)
+        {
+            return (root != null) ? Math.Max(Findepth(root.left), Findepth(root.right)) + 1 : 0;
+        }
+        public static bool IsBalanced(TreeNode root)
+        {
+            if (root == null)
+            {
+                return true;
+            }
+            int heightOfLeft = (root != null) ? Findepth(root.left) + 1 : 0;
+            int heightOfRight = (root != null) ? Findepth(root.right) + 1 : 0;
+            if(Math.Abs(heightOfLeft - heightOfRight) <= 1)
+            {
+                return IsBalanced(root.left) && IsBalanced(root.right);
+            }
+            return false;
+        }
+
+        //111. Minimum Depth of Binary Tree
+        
+        public static int MinDepth(TreeNode root)
+        {
+            int heightOfLeft = (root != null) ? Findepth(root.left) + 1 : 0;
+            int heightOfRight = (root != null) ? Findepth(root.right) + 1 : 0;
+            if(heightOfLeft == 1)
+            {
+                return heightOfRight;
+            }
+            else if(heightOfRight == 1)
+            {
+                return heightOfLeft;
+            }
+            else
+            {
+                return Math.Min(heightOfRight, heightOfLeft);
+            }
+        }
+
     }
 
 }
