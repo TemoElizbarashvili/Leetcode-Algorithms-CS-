@@ -8,9 +8,8 @@ namespace leetcode
     {
         static void Main(string[] args)
         {
-            uint l = 1111;
-            Console.WriteLine(Easy.HammingWeight(00000000000000000000000000001011));
-
+            string k = "kakao";
+            Console.WriteLine(char.ToUpper(k[0]) + k.Substring(1));
         }
     }
 }

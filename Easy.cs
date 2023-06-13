@@ -598,15 +598,13 @@ namespace leetcode
         //191. Number of 1 Bits
         public static int HammingWeight(uint n)
         {
-            uint c = 0;
+            return n.ToString().Where(n => n == '1').Count();
+        }
 
-            while (n > 0)
-            {
-                c += n & 1; // or: c += n % 2;
-                n >>= 1;    // or: n /= 2;
-            }
-
-            return (int)c;
+        //520. Detect Capital
+        public static bool DetectCapitalUse(string word)
+        {
+            return word.Equals(word.ToLower()) || word.Equals(word.ToUpper()) || word.Equals(char.ToUpper(word[0]) + word.Substring(1).ToLower());
         }
     }
 
